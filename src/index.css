@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  overflow-x: auto;
+}
+
+::selection {
+  background: #ff1717;
+  color: #fffdf8;
+}
