@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs'
+import AnimatedList from './components/AnimatedList'
 import './App.css'
 import logoYizhihua from './assets/logo-yizhihua.jpg'
 import logoJiechang from './assets/logo-jiechang.png'
@@ -109,42 +110,53 @@ const projects = [
 
 const strengths = [
   {
-    title: '先看人，再做产品',
-    body: '我做设计时，会先看谁在用、放在哪里、为什么需要它，真正麻烦的地方是什么。很多产品差异不是从造型开始的，而是从人的生活、空间和习惯里慢慢长出来的。',
-    icon: '◎',
+    title: '先把用户看清楚',
+    body: '我做设计时，会先看用户是谁，产品在什么场景里被使用，真正影响体验的地方在哪里。很多需求表面上是功能，背后其实是效率、秩序、安全感和使用成本。把用户看清楚，方案才不会只停在形式上。',
   },
   {
-    title: '把想法推到落地',
-    body: '一个想法画出来只是开始，后面还有结构、材料、成本、打样、包装、运输、安装和真实使用。我更在意的是，它能不能从模糊的需求，慢慢变成能生产、能销售、能被人长期使用的产品。',
-    icon: '◈',
+    title: '能做单品，也能做系统',
+    body: '我可以深入处理一个单品的比例、结构、材料和细节，也能把它放到产品线、空间关系和使用流程里一起考虑。单品要成立，系统也要有秩序。好的设计不只是一个漂亮结果，还应该能继续扩展。',
   },
   {
-    title: '把复杂理成系统',
-    body: '我习惯把零散的问题放回整体里看。一个产品不只是外形，也包含结构、模块、收纳、走线、空间关系和后续扩展。把复杂的地方理顺，把混乱的地方变清楚，是我做设计时很在意的事。',
-    icon: '◇',
+    title: '把方案推到落地',
+    body: '效果图只是开始。材料、工艺、成本、打样、包装、运输、安装和后期使用，都会影响一个方案最后能不能成立。我习惯在设计前期就把这些问题放进来，让想法尽量走向真实产品，而不是停在概念里。',
   },
   {
-    title: '有自己的审美判断',
-    body: '我对拼凑、杂乱和敷衍的东西很敏感。设计不一定要昂贵，也不一定要复杂，但至少应该让世界清楚一点、舒服一点。哪怕是一条线、一个接口、一个转角，也值得认真处理。',
-    icon: '○',
+    title: '对秩序和审美有判断',
+    body: '我对拼凑、杂乱和敷衍的设计很敏感。设计不一定要复杂，也不一定要昂贵，但它应该让产品更清楚，让使用更顺，让细节更经得起看。哪怕是一条线、一个接口、一个转角，只要它影响体验，就值得认真处理。',
   },
 ]
 
 const timeline = [
   {
     year: '2022.04 — 2025.02',
-    event: '南京元域健康科技 / 壹知化（上海）办公系统',
-    detail: '产品主设计师（创始团队）。从零搭建升降桌产品线，完成Dam Beam理线系统、Garner储物系统等核心产品。负责Uone办公家具全线产品画册，把杂乱的产品线整理成有秩序的视觉体系。',
+    event: '南京元域健康科技 / 壹知化（上海）办公系统 Uone',
+    role: '产品设计师｜创始团队成员',
+    paragraphs: [
+      '2022 年参与公司与永艺家具股份有限公司的战略合作，加入 5 人创始团队，共同从零搭建 Uone / 壹知化（上海）办公系统品牌。品牌产品体系覆盖桌类、椅类、柜类、屏风、办公照明、worktools 等完整办公家具系统。',
+      '主要负责 OBOL / ULIX 升降桌全系统设计，覆盖单桌、90 度单桌、120 度单桌、面对面工位、90 度四人位、120 度三人位、会议桌、主管桌等完整品类；同时负责 Interact 协作会议桌、Garner 储物系统、Dam Beam 隔断系统等核心产品设计。',
+      '另负责 Uone 全线产品画册与产品视觉体系梳理，将多品类办公家具系统整理为清晰、统一、有秩序的品牌表达。相关上市产品连续参加两届设计上海展，并在上海市场获得客户与行业友商的积极反馈。',
+    ],
   },
   {
     year: '2025.05 — 2025.10',
     event: '浙江捷昌线性驱动科技股份有限公司',
-    detail: '工业设计师。半年内完成棱翼EdgeWing、MSI VANTAGE、Nomad游牧者、Horizon Desk、Origin Desk等多款升降桌方案，以及新一代民用智能升降桌系统提案。从单品深度设计到系统架构，全程独立推进。',
+    role: '工业设计师｜民用升降桌独立项目负责人',
+    paragraphs: [
+      '作为独立项目设计师加入捷昌，负责民用升降桌整桌产品的差异化开发，面向品牌端与客户端提出具有识别度的产品方案。',
+      '半年内独立完成棱翼 EdgeWing、MSI VANTAGE、Nomad 游牧者、Horizon Desk、Origin Desk 等多款升降桌方案，并提出新一代民用智能升降桌系统概念。',
+      '工作覆盖产品定位、造型差异化、结构语言、功能体验与系统架构规划，推动升降桌从单一功能产品向更完整的家用办公解决方案延展。',
+    ],
   },
   {
     year: '2026.03 — 至今',
     event: '广东亿尚智能家具有限公司',
-    detail: '灵动办公家具设计师。主导货架系统和软包屏风系统设计——货架用一套立柱覆盖8+场景模块，屏风用轻量夹心结构覆盖开放办公到专注舱全场景。从概念到打样全线负责。',
+    role: '灵动办公家具设计师｜系统产品独立项目负责人',
+    paragraphs: [
+      '作为灵动办公独立项目设计师，入职后独立完成符合公司发展方向的产品地图规划，并围绕办公空间系统化需求推进核心产品开发。',
+      '主导货架系统与软包屏风系统设计：货架系统以一套立柱结构覆盖 8+ 场景模块，提升产品延展性与场景适配效率；软包屏风系统采用轻量夹心结构，覆盖开放办公、半开放协作、专注舱等多种办公场景。',
+      '负责从产品规划、概念定义、结构推演到打样落地的完整流程。',
+    ],
   },
 ]
 
@@ -507,13 +519,15 @@ function App() {
       const el = projectScrollRef.current
       if (el && !aboutOpen && !projectModal) {
         const loopWidth = el.scrollWidth / 2
+        const viewportWidth = window.innerWidth
+        const scrollStep = viewportWidth <= 560 ? 0.62 : viewportWidth <= 900 ? 0.82 : 1
         const shouldMove =
           loopWidth > el.clientWidth &&
           !dragState.current.active &&
           performance.now() > autoPausedUntil.current
 
         if (shouldMove) {
-          el.scrollLeft += 1
+          el.scrollLeft += scrollStep
           if (el.scrollLeft >= loopWidth) {
             el.scrollLeft -= loopWidth
           }
@@ -528,6 +542,20 @@ function App() {
       }
     }
   }, [aboutOpen, projectModal])
+
+  useEffect(() => {
+    const resetCompactProjectScroll = () => {
+      const el = projectScrollRef.current
+      if (el && window.innerWidth <= 900) {
+        el.scrollLeft = 0
+        pauseAutoScroll(1800)
+      }
+    }
+
+    resetCompactProjectScroll()
+    window.addEventListener('resize', resetCompactProjectScroll)
+    return () => window.removeEventListener('resize', resetCompactProjectScroll)
+  }, [pauseAutoScroll])
 
   // 清理惯性动画
   useEffect(() => {
@@ -548,44 +576,28 @@ function App() {
         <a className="brand" href="#home">VINCENT · 李森</a>
         <div className="nav-links">
           <div className="nav-item">
-            <button type="button" onClick={() => setAboutOpen(true)}>关于我</button>
-            <div className="nav-flyout" aria-hidden="true">
-              <span>认识 Vincent</span>
-              <a href="#timeline">经历脉络</a>
-              <a href="#strengths">工作方式</a>
-            </div>
+            <button
+              type="button"
+              className={(aboutOpen || activeSection === 'home') ? 'nav-active' : ''}
+              onClick={() => {
+                setActiveSection('home')
+                setAboutOpen(true)
+              }}
+            >
+              关于我
+            </button>
           </div>
           <div className="nav-item">
-            <a href="#projects" className={activeSection === 'projects' ? 'nav-active' : ''}>方案</a>
-            <div className="nav-flyout" aria-hidden="true">
-              <span>项目索引</span>
-              <a href="#projects">升降桌方案</a>
-              <a href="#projects">办公系统</a>
-            </div>
+            <a href="#projects" className={activeSection === 'projects' ? 'nav-active' : ''} onClick={() => setActiveSection('projects')}>方案</a>
           </div>
           <div className="nav-item">
-            <a href="#strengths" className={activeSection === 'strengths' ? 'nav-active' : ''}>优势</a>
-            <div className="nav-flyout" aria-hidden="true">
-              <span>能力结构</span>
-              <a href="#strengths">系统思维</a>
-              <a href="#strengths">落地推进</a>
-            </div>
+            <a href="#strengths" className={activeSection === 'strengths' ? 'nav-active' : ''} onClick={() => setActiveSection('strengths')}>优势</a>
           </div>
           <div className="nav-item">
-            <a href="#timeline" className={activeSection === 'timeline' ? 'nav-active' : ''}>历程</a>
-            <div className="nav-flyout" aria-hidden="true">
-              <span>职业路径</span>
-              <a href="#timeline">壹知化</a>
-              <a href="#timeline">捷昌 / 亿尚</a>
-            </div>
+            <a href="#timeline" className={activeSection === 'timeline' ? 'nav-active' : ''} onClick={() => setActiveSection('timeline')}>历程</a>
           </div>
           <div className="nav-item">
-            <a href="#contact" className={activeSection === 'contact' ? 'nav-active' : ''}>联系</a>
-            <div className="nav-flyout" aria-hidden="true">
-              <span>Contact</span>
-              <a href="tel:18037768273">电话沟通</a>
-              <a href="mailto:18037768273@163.com">发送邮件</a>
-            </div>
+            <a href="#contact" className={activeSection === 'contact' ? 'nav-active' : ''} onClick={() => setActiveSection('contact')}>联系</a>
           </div>
         </div>
         <a className="contact-pill" href="mailto:18037768273@163.com">联系我</a>
@@ -618,10 +630,6 @@ function App() {
                 <h2>方案展示</h2>
               </div>
               <div className="section-heading-right">
-                <p>
-                  每套方案都代表一个完整的设计思考过程——从洞察、概念、结构到落地。
-                  拖动卡片左右浏览，感受每套方案的设计脉络。
-                </p>
                 <span className="section-heading-count">共 9 套方案 · 拖动浏览 →</span>
               </div>
             </div>
@@ -669,12 +677,6 @@ function App() {
                 <span className="section-kicker">02 — Advantages</span>
                 <h2>个人优势</h2>
               </div>
-              <div className="section-heading-right">
-                <p>
-                  这些不是简历上的关键词，而是我从项目、工厂、生活和长期观察里慢慢形成的工作方式。
-                  它们比某一个具体品类更底层，也更接近我做设计时真正依靠的东西。
-                </p>
-              </div>
             </div>
           </FadeIn>
 
@@ -682,8 +684,7 @@ function App() {
             {strengths.map((item, index) => (
               <FadeIn key={item.title} delay={index * 100} variant="scale">
                 <article className="strength-card">
-                  <span className="strength-icon">{item.icon}</span>
-                  <span className="strength-num">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="strength-icon" aria-hidden="true"></span>
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
                 </article>
@@ -706,21 +707,33 @@ function App() {
           </FadeIn>
 
           <div className="timeline">
-            {timeline.map((item, index) => (
-              <FadeIn key={item.year} delay={index * 80}>
-                <div className="timeline-item">
+            <AnimatedList
+              className="timeline-animated-list"
+              itemClassName="timeline-animated-item"
+              showGradients={false}
+              displayScrollbar={false}
+              enableArrowNavigation={false}
+              items={timeline.map((item, index) => (
+                <article key={item.year} className="timeline-item">
                   <div className="timeline-marker">
                     <span className="timeline-dot"></span>
                     {index < timeline.length - 1 && <span className="timeline-line"></span>}
                   </div>
                   <div className="timeline-content">
-                    <strong className="timeline-year">{item.year}</strong>
+                    <div className="timeline-head">
+                      <strong className="timeline-year">{item.year}</strong>
+                      <span className="timeline-role">{item.role}</span>
+                    </div>
                     <h4>{item.event}</h4>
-                    <p>{item.detail}</p>
+                    <div className="timeline-body">
+                      {item.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
+                </article>
+              ))}
+            />
           </div>
         </div>
       </section>
@@ -765,7 +778,7 @@ function App() {
             <h2>关于我</h2>
 
             <div className="about-grid">
-              {aboutSections.map((section, index) => (
+              {aboutSections.map((section) => (
                 <section key={section.title} className="about-block">
                   <h3>{section.title}</h3>
                   {section.paragraphs.map((paragraph) => (
