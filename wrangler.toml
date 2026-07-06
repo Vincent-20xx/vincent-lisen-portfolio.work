@@ -1,0 +1,6 @@
+name = "vincent-lisen-portfolio-work"
+compatibility_date = "2026-07-06"
+
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"
